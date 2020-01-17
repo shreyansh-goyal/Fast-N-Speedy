@@ -1,0 +1,33 @@
+<div class="body">
+  <div class="form">
+    <form class="example-form" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Name</mat-label>
+        <input formControlName="name" matInput  required>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Email Id</mat-label>
+        <input formControlName="emailId" matInput  required>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Mobile Number</mat-label>
+        <input formControlName="phoneNo" matInput  required> 
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Address</mat-label>
+        <input formControlName="address" matInput  required>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="example-full-width" >
+        <mat-label>Landmark</mat-label>
+        <input formControlName="landmark" matInput  required>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="example-full-width" >
+        <mat-label>Password</mat-label>
+        <input formControlName="password" matInput type="password" required>
+      </mat-form-field>
+      <button mat-raised-button color="warn">Submit</button>
+      <p style="text-align: center;color:red" *ngIf="signupForm.status=='INVALID'&&signupForm.touched">Form details are not valid</p>
+      <p style="text-align: center;color:red" *ngIf="location">Location is requied for using the application</p>
+    </form> 
+  </div>
+</div>

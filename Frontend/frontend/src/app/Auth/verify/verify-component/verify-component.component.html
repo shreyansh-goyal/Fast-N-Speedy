@@ -1,0 +1,8 @@
+<div class="body">
+  <mat-form-field style="margin-left:15%;width:70%;margin-top:20vh" appearance="outline" class="example-full-width">
+    <mat-label>Enter One Time Password</mat-label>
+    <input  matInput  required [(ngModel)]="otp">
+  </mat-form-field>
+  <button (click)="verifyOtp()" style="display:block;margin-left:47.5%" mat-raised-button color="warn">Verify</button>
+  <p class="center red" *ngIf="invalid">Entered one time passowrd is not correct</p>
+</div>

@@ -1,0 +1,65 @@
+.navigation-bar{
+    display:flex;
+    justify-content: space-around;
+    width:100%
+}
+.icon{
+    font-size: 40px;
+    cursor: pointer;
+    transition-duration: 0.2s;
+}
+.icon:hover{
+    transition-duration: 0.2s;
+    font-size: 45px;
+}
+.carousel-demo .ui-carousel .ui-carousel-content .ui-carousel-item .car-details > .p-grid {
+    border: 1px solid #b3c2ca;
+    border-radius: 3px;
+    margin: 0.3em;
+    text-align: center;
+    padding: 2em 0 2.25em 0;
+}
+.carousel-demo .ui-carousel .ui-carousel-content .ui-carousel-item .car-data .car-title {
+    font-weight: 700;
+    font-size: 20px;
+    margin-top: 24px;
+}
+.carousel-demo .ui-carousel .ui-carousel-content .ui-carousel-item .car-data .car-subtitle {
+    margin: 0.25em 0 2em 0;
+}
+.carousel-demo .ui-carousel .ui-carousel-content .ui-carousel-item .car-data button {
+    margin-left: 0.5em;
+}
+.carousel-demo .ui-carousel .ui-carousel-content .ui-carousel-item .car-data button:first-child {
+    margin-left: 0;
+}
+.carousel-demo .ui-carousel.custom-carousel .ui-carousel-dot-icon {
+    width: 16px !important;
+    height: 16px !important;
+    border-radius: 50%;
+}
+.carousel-demo .ui-carousel.ui-carousel-horizontal .ui-carousel-content .ui-carousel-item.ui-carousel-item-start .car-details > .p-grid {
+    margin-left: 0.6em;
+}
+.carousel-demo .ui-carousel.ui-carousel-horizontal .ui-carousel-content .ui-carousel-item.ui-carousel-item-end .car-details > .p-grid {
+    margin-right: 0.6em;
+}
+
+.rotate svg{
+    transition-duration: 1s;
+}
+.rotate:hover svg{
+    transform: rotate(360deg);
+    transition-duration:1s;
+}
+.restaurant-card{
+    cursor: pointer;
+    margin:2vw 0;
+}
+a{
+ color:black;
+ text-decoration: none;   
+}
+a:hover{
+    color:lightskyblue
+}
