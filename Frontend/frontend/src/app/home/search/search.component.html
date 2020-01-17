@@ -5,7 +5,7 @@
         <input matInput [(ngModel)]="search">
       </mat-form-field>
       <div style="width:90%;margin:10px auto">
-        <mat-card mat-ripple *ngFor="let restaurant of restaurants|filter:search"  class="restaurant-card">
+        <mat-card mat-ripple (click)="loadRestaurant(restaurant)" *ngFor="let restaurant of restaurants|filter:search;let i= index"  class="restaurant-card">
             <mat-grid-list cols="5" rowHeight="32vh">
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
                     <img style="border-radius:2px;width:26vw;height:25vh" [src]="restaurant.Details.img" alt="">

@@ -22,6 +22,7 @@ import { ProfileComponent } from './profile/profile.component';
 import {MatButtonModule} from '@angular/material/button';
 import { RestaurantComponent } from './restaurant/restaurant.component'; 
 import {MatExpansionModule} from '@angular/material/expansion'; 
+import {MatDividerModule} from '@angular/material/divider'; 
 const routes:Routes=[
     {path:"",component:HomeComponent,children:[
         {path:"",component:InHomeComponent},
@@ -55,7 +56,8 @@ const routes:Routes=[
         MatInputModule,
         FormsModule,
         MatButtonModule,
-        MatExpansionModule
+        MatExpansionModule,
+        MatDividerModule
     ],
     exports:[
         

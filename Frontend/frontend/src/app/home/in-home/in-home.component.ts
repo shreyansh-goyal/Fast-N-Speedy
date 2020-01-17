@@ -41,8 +41,8 @@ export class InHomeComponent implements OnInit {
     }
     )
   }
-  loadRestaurant(){
-    this.router.navigate(["/home","restaurant",`${1}`])
+  loadRestaurant(index){
+    setTimeout(()=>{this.router.navigate(["/home","restaurant",`${index}`])},500)
   }
 
 }
