@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RestaurantModel } from '../RestaurantModel/restaurant.model';
-import {HomeService} from "../home.service";
+import { HomeService } from "../home.service";
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-search',
@@ -8,26 +8,25 @@ import { Router } from '@angular/router';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  search:string;
-  restaurants:RestaurantModel[]; 
-  constructor(private home:HomeService,private router:Router) { }
+  search: string;
+  restaurants: RestaurantModel[];
+  constructor(private home: HomeService, private router: Router) { }
 
   ngOnInit() {
-    this.restaurants=[...this.home.restaurants]
+    this.restaurants = [...this.home.restaurants]
   }
-  loadRestaurant(res){
+  loadRestaurant(res) {
     console.log("loaded");
-    let index=this.restaurants.findIndex(e=>{
+    let index = this.restaurants.findIndex(e => {
       console.log(res);
-      if(e["Details"].name==res.Details.name)
-      {
+      if (e["Details"].name == res.Details.name) {
         return true;
       }
     })
     console.log(index);
 
-    setTimeout(()=>{
-      this.router.navigate(['/home','restaurant',`${index}`]);
-    },500)
+    setTimeout(() => {
+      this.router.navigate(['/home', 'restaurant', `${index}`]);
+    }, 500)
   }
 }

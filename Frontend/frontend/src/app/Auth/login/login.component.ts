@@ -4,7 +4,6 @@ import { LoginService } from './login.service';
 import { Router } from '@angular/router';
 import {Store} from "@ngrx/store";
 import * as AuthActions from "../store/auth.actions"
-import {State} from "../store/auth.reducer"
 import { Observable } from 'rxjs';
 @Component({
   selector: 'app-login',
@@ -18,8 +17,11 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
 
     navigator.geolocation.getCurrentPosition(resp=>{
+      console.log(resp);
       localStorage.setItem("latitude",JSON.stringify(resp.coords.latitude));
       localStorage.setItem("longitude",JSON.stringify(resp.coords.longitude));
+    },(err)=>{
+      console.log(err);
     })
     this.loginForm= new FormGroup({
       emailId:new FormControl(null,[Validators.required,Validators.email]),
@@ -31,6 +33,7 @@ export class LoginComponent implements OnInit {
     this.userLogin.userLogin(this.loginForm.value.emailId,this.loginForm.value.password)
     .subscribe(
       (data)=>{
+        console.log("data is",data);
         this.store.dispatch(new AuthActions.AddUser({
           user:{
             "jwtToken":data["token"],
@@ -39,7 +42,7 @@ export class LoginComponent implements OnInit {
       },
       (err)=>{alert(err.error.message)},
       ()=>{
-        this.router.navigate(['/home']);
+        this.router.navigate(['/home'])
       }
     )
   }

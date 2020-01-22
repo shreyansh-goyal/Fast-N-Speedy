@@ -11,4 +11,7 @@ router.post("/login",(req,res)=>{
     console.log("caught the request");
     AuthOperations.login(req,res);
 })
+router.post("/deliveryLogin",(req,res)=>{
+    AuthOperations.delLogin(req,res);
+})
 module.exports= router

@@ -1,0 +1,51 @@
+
+<div >
+
+  <div style="background-color: #171a29;height:40vh;padding:2vw 2vh;"> 
+    <mat-grid-list cols="4" rowHeight="100%">
+      <mat-grid-tile
+          [colspan]="1"
+          [rowspan]="1">
+            <img [src]="restaurant['Details'].img" style="height:30vh;width:20vw;">
+  
+  
+      </mat-grid-tile>
+      <mat-grid-tile
+      [colspan]="3"
+      [rowspan]="1"
+      >
+      <div style='width:100%;color:white;font-size: 3vh;'> 
+        <p style="font-size: 7vh;font-weight: 600;margin:0;">{{restaurant.Details.name}}</p > 
+         <span style="margin-right:20px;" *ngFor="let i of restaurant['Details'].foodTypeServed" >{{i}}</span >
+        <p>{{restaurant.Details.address}}</p>
+        <span>Ratings : {{restaurant.Details.rating}}</span>|<span>Cost For Two : {{restaurant.Details.costForTwo}}</span>
+      </div>
+    </mat-grid-tile>
+    </mat-grid-list> 
+  </div>
+  <div>
+    <mat-card style="width:70%;margin-left:15%;margin-top:2%">
+      <p style="font-size: 25px;text-align: center;font-weight: 800;">Cart</p>
+      <div *ngFor="let order of orders;let i=index;" style="margin:20px 0px;">
+        {{order.food}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{order.price}}&nbsp;&nbsp;&nbsp;
+        <span style="position: absolute;right:10px;">
+        <button style="width:40px;height:40px;" (click)="increaseQuantity(i)" mat-mini-fab color="primary">+</button>
+        {{order.quantity}}
+        <button style="width:40px;height:40px;" (click)="decreaseQuantity(i)"  mat-mini-fab color="primary">-</button>
+        </span>
+        <mat-divider style="width:80%;margin-left: 10%;margin-top:20px;"></mat-divider>
+        <div style="margin-top:50px;">
+            Total : {{totalCost}}
+            <button (click)="loadMap()" style="position: absolute;right:10px;" mat-raised-button color="primary">Confirm Order</button>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+  <div style="padding-left:150px;height:600px;">
+    <agm-map *ngIf="map" style="width:90%;height:400px;" [latitude]="user.latitude" [longitude]="user.longitude">
+      <agm-marker  [latitude]="user.latitude" [longitude]="user.longitude" [iconUrl]="url"></agm-marker>
+      <agm-marker  [latitude]="restaurant.Details.latitude" [longitude]="restaurant.Details.longitude" [iconUrl]="url"></agm-marker>
+      <agm-marker  [latitude]="user.latitude+0.4" [longitude]="user.longitude+0.6" [iconUrl]="url"></agm-marker>
+    </agm-map>
+  </div>
+</div>

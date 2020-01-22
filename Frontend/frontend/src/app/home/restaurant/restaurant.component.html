@@ -73,7 +73,7 @@
           <mat-divider style="width:80%;margin-left: 10%;margin-top:10px;"></mat-divider>
           <div style="margin-top:50px;">
               Total : {{totalCost}}
-              <button style="position: absolute;right:10px;" mat-raised-button color="primary">Go To Cart</button>
+              <button (click)="goToCart()" style="position: absolute;right:10px;" mat-raised-button color="primary">Go To Cart</button>
           </div>
         </mat-card>
       </div> 

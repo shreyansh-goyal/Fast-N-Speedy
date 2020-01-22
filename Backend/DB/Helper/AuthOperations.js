@@ -2,6 +2,7 @@ const AuthSchema=require("../Schema/AuthSchema");
 const nodemailer = require("nodemailer");
 const secret = require('../../Enviorment/config/otpSecret');
 const {authenticator}= require("otplib");
+const {Delivery} =require("../Schema/DeliverySchema");
 const AuthOperations={
     signup:function(req,res){
         const token = authenticator.generate(secret);
@@ -104,6 +105,40 @@ const AuthOperations={
                             console.log(err)
                             res.status(500).json({message:"failed to create the token",err});                            
                         }
+                        console.log("send");
+                        res.json({
+                            token:token,
+                            message:"Correct credentials user is logged in",
+                            user:doc
+                        })
+                    })
+                }
+                else
+                {
+                    res.status(403).json({message:"Wrong Credentials"});
+                }
+            }
+        })
+    },
+    delLogin:function(req,res){
+        const jwt = require("jsonwebtoken");
+        data=req.body;
+        Delivery.findOne({"Details.emailId":data.emailId},(err,doc)=>{
+            if(doc==null){
+                res.status(400).json({message:"This emailId is not registred please signup if you are a new user"});
+            }
+            else{
+                console.log(doc);
+                if(doc.Details.password==data.password)
+                {
+                    user=doc.Details;
+                    jwt.sign({user},secret,(err,token)=>{
+                        if(err)
+                        {
+                            console.log(err)
+                            res.status(500).json({message:"failed to create the token",err});                            
+                        }
+                        console.log("send");
                         res.json({
                             token:token,
                             message:"Correct credentials user is logged in",

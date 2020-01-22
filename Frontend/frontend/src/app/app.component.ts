@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'frontend';
+  latitude=51.897314;
+  longitude= 7.12354
 }

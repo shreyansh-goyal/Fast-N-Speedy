@@ -23,15 +23,32 @@ import {StoreModule} from "@ngrx/store";
 import { AuthReducer } from './Auth/store/auth.reducer';
 import { AuthInterceptor } from './shared/auth.interceptor';
 import {MatExpansionModule} from '@angular/material/expansion'; 
+import {AgmCoreModule} from "@agm/core";
+import { CartService } from './home/shared/cart.service';
+import { CartComponent} from './cart/cart.component';
+import {MatGridListModule} from '@angular/material/grid-list'; 
+import {MatDividerModule} from '@angular/material/divider'; 
+import {MatCardModule} from '@angular/material/card';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { DeliveryComponent } from './DeliveryBoy/delivery/delivery.component';
+import { DeliveryLoginComponent } from './Auth/delivery-login/delivery-login.component';
+import { AgmDirectionModule } from 'agm-direction';
+const config: SocketIoConfig = { url: 'http://localhost:1234', options: {} };
+
+
 @NgModule({
   declarations: [
     AppComponent,
     SignupComponent,
     VerifyComponent,
     LoginComponent,
-    AuthComponent
+    AuthComponent,
+    CartComponent,
+    DeliveryComponent,
+    DeliveryLoginComponent,
   ],
   imports: [
+    SocketIoModule.forRoot(config),
     BrowserModule,
     BrowserAnimationsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
@@ -45,12 +62,21 @@ import {MatExpansionModule} from '@angular/material/expansion';
     HomeModule,
     CarouselModule,
     MatExpansionModule,
-    StoreModule.forRoot({User:AuthReducer})
+    StoreModule.forRoot({User:AuthReducer}),
+    MatGridListModule,
+    MatDividerModule,
+    MatCardModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAm-9PwJzIYFx-AWEIlkMwWHAWHM-LGpwQ',
+      libraries: ['places'] 
+    }),
+    AgmDirectionModule,
   ],
   providers: [
     AuthService,
     VerifyService,
     LoginService,
+    CartService,
     {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true}
   ],
   bootstrap: [AppComponent]

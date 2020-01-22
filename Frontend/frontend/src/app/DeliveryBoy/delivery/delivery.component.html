@@ -1,0 +1,53 @@
+<div *ngIf="restaurantData">
+<div  style="background-color: #171a29;height:50vh;padding:2vw 2vh;"> 
+    <mat-grid-list cols="4" rowHeight="100%">
+      <mat-grid-tile
+          [colspan]="1"
+          [rowspan]="1">
+            <img [src]="restaurant.Details.img" style="height:30vh;width:20vw;">
+  
+  
+      </mat-grid-tile>
+      <mat-grid-tile
+      [colspan]="3"
+      [rowspan]="1"
+      >
+      <div style='width:100%;color:white;font-size: 3vh;'> 
+        <p style="font-size: 7vh;font-weight: 600;margin:0;">{{restaurant.Details.name}}</p > 
+            <span style="margin-right:20px;" *ngFor="let i of restaurant['Details'].foodTypeServed" >{{i}}</span >
+        <p>{{restaurant.Details.address}}</p>
+        <span>Ratings : {{restaurant.Details.rating}}</span>|<span>Cost For Two :{{restaurant.Details.costForTwo}}</span>
+      </div>
+    </mat-grid-tile>
+    </mat-grid-list> 
+</div>
+<mat-card style="width:70%;margin-left:15%;margin-top:2%">
+    <p style="font-size: 25px;text-align: center;font-weight: 800;">Cart</p>
+    <div  *ngFor="let order of orders;let i=index;"  style="margin:20px 0px;">
+      {{order.food}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{order.price}} Rs&nbsp;&nbsp;&nbsp;
+      <span style="position: absolute;right:10px;">
+      {{order.quantity}} 
+     </span>
+      <mat-divider style="width:80%;margin-left: 10%;margin-top:20px;"></mat-divider>
+      <div style="margin-top:50px;">
+          Total : {{totalCost}} Rs
+      </div>
+    </div>
+  </mat-card>
+  <div  style="padding-left:150px;height:450px;margin-top:40px">
+    <agm-map  style="width:90%;height:400px;" [latitude]="dir.origin.lat" [longitude]="dir.origin.lng">
+    <agm-marker class="mapMarker" [iconUrl]="'../../../assets/icons/driver.png'"  [latitude]="dir.origin.lat" [longitude]="dir.origin.lng" ></agm-marker>
+    <agm-marker class="mapMarker" [iconUrl]="destinationIconUrl"  [latitude]="dir.destination.lat" [longitude]="dir.destination.lng" ></agm-marker>
+        <agm-direction  [renderOptions]="renderOptions"  [origin]="dir.origin" [destination]="dir.destination"></agm-direction>
+    </agm-map>
+  </div>
+  <button *ngIf="reachedRestaurant" (click)="loadUserDirection()" style="display: block;margin:20px auto;" mat-raised-button color="primary">Picked Up Order</button>
+  <button  (click)="delivered()" style="display: block;margin:20px auto;" mat-raised-button color="primary">Delivered To Customer</button>
+</div>
+
+<div *ngIf="!restaurantData" (click)="getLocation()" style="height:100vh;width:100vw;background-color: #eaeaea;font-family: 'Titillium Web'">
+    <div style="width:25%;margin-left:auto;margin-right:auto;padding-top:10%;">
+        <img src="https://image.flaticon.com/icons/png/512/84/84461.png" style="display:block;width:70%;height:100%;margin:0 auto;" alt="">
+        <p style="font-size:25px;color:grey;">Wait until we get you a order</p>
+    </div>
+</div>

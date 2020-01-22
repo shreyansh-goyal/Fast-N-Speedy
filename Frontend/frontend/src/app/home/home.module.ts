@@ -22,13 +22,14 @@ import { ProfileComponent } from './profile/profile.component';
 import {MatButtonModule} from '@angular/material/button';
 import { RestaurantComponent } from './restaurant/restaurant.component'; 
 import {MatExpansionModule} from '@angular/material/expansion'; 
-import {MatDividerModule} from '@angular/material/divider'; 
+import {MatDividerModule} from '@angular/material/divider';
+
 const routes:Routes=[
     {path:"",component:HomeComponent,children:[
         {path:"",component:InHomeComponent},
         {path:"search",component:SearchComponent},
         {path:"profile",component:ProfileComponent},
-        {path:"restaurant/:id",component:RestaurantComponent},        
+        {path:"restaurant/:id",component:RestaurantComponent},       
     ]},
     
 ]
@@ -41,7 +42,7 @@ const routes:Routes=[
         SearchComponent,
         filterPipe,
         ProfileComponent,
-        RestaurantComponent
+        RestaurantComponent,
     ],
     imports:[
         NgbModule,
@@ -57,7 +58,7 @@ const routes:Routes=[
         FormsModule,
         MatButtonModule,
         MatExpansionModule,
-        MatDividerModule
+        MatDividerModule,
     ],
     exports:[
         

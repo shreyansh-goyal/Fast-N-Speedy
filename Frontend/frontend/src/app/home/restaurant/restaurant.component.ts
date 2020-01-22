@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RestaurantModel } from '../RestaurantModel/restaurant.model';
 import { HomeService } from '../home.service';
+import { CartService } from '../shared/cart.service';
 
 @Component({
   selector: 'app-restaurant',
@@ -14,7 +15,7 @@ export class RestaurantComponent implements OnInit {
   image:Array<any>;
   orders:Array<any>=[];
   totalCost:number=0;
-  constructor(private route:ActivatedRoute,private home:HomeService) { }
+  constructor(private route:ActivatedRoute,private home:HomeService,private router:Router,private cart:CartService) { }
 
   ngOnInit() {
     this.route.params.subscribe(
@@ -25,6 +26,7 @@ export class RestaurantComponent implements OnInit {
         console.log(this.image);
       }
     )
+
   }
   computeCost()
   {
@@ -66,5 +68,11 @@ export class RestaurantComponent implements OnInit {
       this.orders.splice(index,index+1);
       this.computeCost()
     }
+  }
+  goToCart()
+  {
+    this.cart.setOrders(this.orders);
+    this.cart.setRestaurant(this.restaurant);
+    this.router.navigate(['/cart'])
   }
 }
