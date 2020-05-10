@@ -1,4 +1,4 @@
-const RestaurantSchema=require("../Schema/RestaurantSchema"); 
+const RestaurantSchema = require("../Schema/RestaurantSchema");
 const RestaurantOperations={
     getDetails:function(req,res){
       
@@ -19,9 +19,10 @@ const RestaurantOperations={
             menu:data.menu,
             rating:data.rating,
             costForTwo:data.costForTwo,
-            allReviews:data.allReviews,
             innerPhoto:data.innerPhoto,
-            FoodTypeServed:data.foodTypeServed
+            FoodTypeServed:data.foodTypeServed,
+            rating:0,
+            allReviews:[]
         }
         RestaurantSchema.Restaurant.create({Details},(err)=>{
             if(err)

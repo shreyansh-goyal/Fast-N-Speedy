@@ -3,11 +3,15 @@ const ReviewSchema=mongoose.Schema;
 
 const review=new ReviewSchema({
     Details:{
-        userId:{type:String,required:true,unique:true},
+        orderId:{type:String,required:true,unique:true},
+        restaurantName:{type:String,required:true},
+        resId:{type:String,required:true},
+        userId:{type:String,required:true},
         order:{type:Array,required:true},
         review:{type:String},
         rating:{type:Number},
-        alreadyRated:{type:Boolean}
+        alreadyRated:{type:Boolean},
+        totalCost:{type:Number,required:true}
     }
 })
 const Review=mongoose.model("Order",review);

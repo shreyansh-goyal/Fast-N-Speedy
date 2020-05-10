@@ -16,7 +16,15 @@ const user=new AuthSchema({
         token:{type:Number}
     }
 })
+const admin= new AuthSchema({
+    Details:{
+        password:{type:String,required:true,unique:true},
+        id:{type:Number,required:true,unique:true}
+    }
+})
 const User=mongoose.model("User",user);
+const Admin=mongoose.model("Admin",admin);
 module.exports={
-    User
+    User,
+    Admin
 }

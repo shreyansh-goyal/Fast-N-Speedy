@@ -2,8 +2,6 @@ const secret =require("../Enviorment/config/otpSecret");
 const jwt = require("jsonwebtoken");
 let verifyToken=(req,res,next)=>
 {
-    console.log("the function is called");
-    console.log(req.headers);
     const bearerHeader = req.headers["authorization"];
     if(typeof(bearerHeader)!=='undefined')
     {
@@ -13,7 +11,7 @@ let verifyToken=(req,res,next)=>
         jwt.verify(req.token,secret,(err,authData)=>{
             if(err)
             {
-                console.log("we have some error");
+                console.log(err);
                 res.status(403).json({message:"Unauthenticated User"});                
             }
             else
@@ -27,14 +25,11 @@ let verifyToken=(req,res,next)=>
     else
     { 
         if ('OPTIONS' === req.method) {
-        //respond with 200
         next()
       }
       else {
-      //move on
       res.status(403).json({message:"UnAuthenticated User"});
       }
-        //forbidden
     }
 }
 module.exports={

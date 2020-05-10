@@ -24,6 +24,22 @@ const AuthOperations={
             }
         })
     },
+    verifyAdmin:function(req,res){   
+        AuthSchema.Admin.find({"Details.password":req.body.password},(err,doc)=>{
+            if(doc.length>=1)
+            {
+                res.status(200).json({id:doc[0].Details.id});
+            }
+            else
+            {
+                res.status(404).json({message:"No password exsist"});
+            }
+            if(err)
+            {
+                res.status(500),json({error:err});
+            }
+        })
+    },
     verifyMailAddress:function(otp,mail,req,res){
         console.log(mail);
         let mailOptions = {
@@ -99,7 +115,7 @@ const AuthOperations={
                 if(doc.Details.password==data.password)
                 {
                     user=doc.Details;
-                    jwt.sign({user},secret,(err,token)=>{
+                    jwt.sign({user},secret,{expiresIn:'12h'},(err,token)=>{
                         if(err)
                         {
                             console.log(err)
@@ -132,7 +148,7 @@ const AuthOperations={
                 if(doc.Details.password==data.password)
                 {
                     user=doc.Details;
-                    jwt.sign({user},secret,(err,token)=>{
+                    jwt.sign({user},secret,{expiresIn:'2h'},(err,token)=>{
                         if(err)
                         {
                             console.log(err)
