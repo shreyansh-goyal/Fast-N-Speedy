@@ -1,0 +1,25 @@
+<div class="body">
+  <div class="form">
+    <form class="example-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <h2 style="text-align: center;">Banners</h2>
+      <div formArrayName="banners">
+        <div class="form-group" *ngFor="let element of loginForm.get('banners').controls;let i = index">
+          <label for="exampleInputEmail1">Banner {{i}}</label>
+          <input type="email" class="form-control" [formControlName]="i" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Banner Source">
+        </div>
+      </div>
+
+        <div style="display: flex;justify-content: space-around;padding:10px;" >
+          <button class="btn btn-danger" type="button" (click)="addFormControl()">Add Banner</button> <button class="btn btn-danger" type="button" (click)="deleteFormControl()">Delete Banner</button>
+          </div>
+
+        <div style="display: flex;justify-content: space-around;padding:10px;" >
+        <button class="btn btn-success" type="button" (click)="RegisterRestaurant()">Register Restaurants</button> <button class="btn btn-success" type="button" (click)="RegisterDriver()">Register Drivers</button>
+        </div>
+      <div >
+        <button mat-raised-button style="margin:0 0 0 43%"  color="warn">Submit</button>
+      </div>
+</form>
+  </div>
+</div>
+   

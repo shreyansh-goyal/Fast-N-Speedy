@@ -1,22 +1,20 @@
 <div *ngIf="restaurantData">
-<div  style="background-color: #171a29;height:50vh;padding:2vw 2vh;"> 
+<div  style="background-color: #171a29;" class="header"> 
     <mat-grid-list cols="4" rowHeight="100%">
       <mat-grid-tile
           [colspan]="1"
           [rowspan]="1">
-            <img [src]="restaurant.Details.img" style="height:30vh;width:20vw;">
-  
-  
+            <img [src]="restaurant.Details.img"  class="headerImage">
       </mat-grid-tile>
       <mat-grid-tile
       [colspan]="3"
       [rowspan]="1"
       >
       <div style='width:100%;color:white;font-size: 3vh;'> 
-        <p style="font-size: 7vh;font-weight: 600;margin:0;">{{restaurant.Details.name}}</p > 
-            <span style="margin-right:20px;" *ngFor="let i of restaurant['Details'].foodTypeServed" >{{i}}</span >
-        <p>{{restaurant.Details.address}}</p>
-        <span>Ratings : {{restaurant.Details.rating}}</span>|<span>Cost For Two :{{restaurant.Details.costForTwo}}</span>
+        <p class="restaurantName">{{restaurant.Details.name}}</p > 
+            <span style="margin-right:20px;" class="restaurantDetails" *ngFor="let i of restaurant['Details'].foodTypeServed" >{{i}}</span >
+        <p class="restaurantDetails">{{restaurant.Details.address}}</p>
+        <span class="restaurantDetails">Ratings : {{restaurant.Details.rating}}</span>|<span class="restaurantDetails">Cost For Two :{{restaurant.Details.costForTwo}}</span>
       </div>
     </mat-grid-tile>
     </mat-grid-list> 
@@ -34,19 +32,19 @@
       </div>
     </div>
   </mat-card>
-  <div  style="padding-left:150px;height:450px;margin-top:40px">
-    <agm-map  style="width:90%;height:400px;" [latitude]="dir.origin.lat" [longitude]="dir.origin.lng">
+  <div  style="padding:5%;width:100%">
+    <agm-map  class="map" [latitude]="dir.origin.lat" [longitude]="dir.origin.lng">
     <agm-marker class="mapMarker" [iconUrl]="'../../../assets/icons/driver.png'"  [latitude]="dir.origin.lat" [longitude]="dir.origin.lng" ></agm-marker>
     <agm-marker class="mapMarker" [iconUrl]="destinationIconUrl"  [latitude]="dir.destination.lat" [longitude]="dir.destination.lng" ></agm-marker>
         <agm-direction  [renderOptions]="renderOptions"  [origin]="dir.origin" [destination]="dir.destination"></agm-direction>
     </agm-map>
   </div>
   <button *ngIf="reachedRestaurant" (click)="loadUserDirection()" style="display: block;margin:20px auto;" mat-raised-button color="primary">Picked Up Order</button>
-  <button  (click)="delivered()" style="display: block;margin:20px auto;" mat-raised-button color="primary">Delivered To Customer</button>
+  <button *ngIf="reachedCustomer" (click)="delivered()" style="display: block;margin:20px auto;" mat-raised-button color="primary">Delivered To Customer</button>
 </div>
 
 <div *ngIf="!restaurantData" (click)="getLocation()" style="height:100vh;width:100vw;background-color: #eaeaea;font-family: 'Titillium Web'">
-    <div style="width:25%;margin-left:auto;margin-right:auto;padding-top:10%;">
+    <div class="bannerDiv" >
         <img src="https://image.flaticon.com/icons/png/512/84/84461.png" style="display:block;width:70%;height:100%;margin:0 auto;" alt="">
         <p style="font-size:25px;color:grey;">Wait until we get you a order</p>
     </div>

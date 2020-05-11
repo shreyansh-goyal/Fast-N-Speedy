@@ -23,5 +23,31 @@
         ]
       }
     }
+  ],
+  "dataGroups":[
+      {
+        "name":"login",
+        "urls":[
+          "http://localhost:1234/auth/login"
+        ],
+        "cacheConfig":{
+          "maxSize":5,
+          "maxAge":"6h",
+          "timeout":"10s",
+          "stratergy":"freshness"  
+        }
+      },
+      {
+        "name":"restaurant",
+        "urls":[
+          "http://localhost:1234/restaurants"
+        ],
+        "cacheConfig":{
+          "maxSize":5,
+          "maxAge":"6h",
+          "timeout":"10s",
+          "stratergy":"freshness"  
+        }
+      }
   ]
 }

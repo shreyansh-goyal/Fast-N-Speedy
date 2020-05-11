@@ -1,5 +1,5 @@
 import { CartService } from "../home/shared/cart.service";
-import { Component, AfterViewInit, ViewChild, ElementRef,OnInit, ɵConsole, Inject } from 
+import { Component, AfterViewInit, ViewChild, ElementRef,OnInit, ɵConsole, Inject, Input } from 
 '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -12,14 +12,32 @@ import { Router } from '@angular/router';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-  url={
-    url: 'https://cdn0.iconfinder.com/data/icons/map-and-navigation-2-1/48/100-512.png',
+  @Input("noRestaurant") element;
+  driverLatitude=0;
+  driverLongitude=0;
+  Homeurl={
+    url: 'https://cdn0.iconfinder.com/data/icons/map-location-solid-style/91/Map_-_Location_Solid_Style_23-512.png',
+    scaledSize: {
+        width: 40,
+        height: 60
+    }
+  }
+  Restauranturl={
+    url: 'https://static.thenounproject.com/png/1661307-200.png',
+    scaledSize: {
+        width: 40,
+        height: 60
+    }
+  }
+  Driverurl={
+    url: 'https://image.flaticon.com/icons/png/512/870/premium/870186.png',
     scaledSize: {
         width: 40,
         height: 60
     }
   }
   restaurant:any;
+  driver:any=false;
   orders:Array<any>;
   totalCost: number=0;
   map:boolean=false;
@@ -29,6 +47,7 @@ export class CartComponent implements OnInit {
   constructor(private cart:CartService,private store:Store<{User:{user}}>,private socket:Socket,private router:Router) { }
 
   ngOnInit() {
+    console.log(document.cookie);
     this.restaurant=this.cart.restaurant;
     this.orders=this.cart.getOrders();
     this.computeCost();
@@ -40,10 +59,13 @@ export class CartComponent implements OnInit {
       (err)=>{},
       ()=>{}
     )
-    this.socket.fromEvent<{data}>("someEvent").subscribe(
-      (data)=>{
+    this.socket.fromEvent<{data}>("changeDriverLocation"+this.user.emailId).subscribe(
+      (data:any)=>{
         console.log(data);
-        alert(data);0
+        this.driver=true;
+        this.driverLatitude=data.data.coordinates.latitude;
+        this.driverLongitude=data.data.coordinates.longitude;
+        console.log(this.driverLatitude,this.driverLongitude);
       },
       (err)=>{
         console.log(err);
@@ -52,8 +74,17 @@ export class CartComponent implements OnInit {
         console.log("request is completed");
       }
     )
-    this.socket.emit("getOrder",{restaurant:this.restaurant,user:this.user,order:this.orders})
-      console.log("deliveredToCustomer"+this.user.emailId);
+    this.socket.fromEvent<{data}>("No Driver Found"+this.user.emailId).subscribe(
+      (data:any)=>{
+        alert("Sorry we cannot deliver this time");
+      },
+      (err)=>{
+        console.log(err);
+      },
+      ()=>{
+        console.log("request is completed");
+      }
+    )
     this.socket.fromEvent("deliveredToCustomer"+this.user.emailId).subscribe(
       (data)=>{
         alert("Your wait is over!Food is on your gate...");
@@ -90,29 +121,7 @@ export class CartComponent implements OnInit {
   loadMap()
   {
     this.map=true;
+    this.socket.emit("getOrder",{restaurant:this.restaurant,user:this.user,order:this.orders})
   }
-  // openDialog(){
-  //   console.log("hello");
-  //   const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-  //     width: '250px',
-  //     height:'250px'
-  // });
-  // dialogRef.afterClosed().subscribe(result => {
-  //   console.log('The dialog was closed');
-  // });
-//}
+
 }
-// @Component({
-//   selector: 'dialog-overview-example-dialog',
-//   templateUrl: './dialog-overview-example-dialog.html',
-// })
-// export class DialogOverviewExampleDialog {
-
-//   constructor(
-//     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-//     @Inject(MAT_DIALOG_DATA) public data: any) {}
-
-//   onNoClick(): void {
-//     this.dialogRef.close();
-//   }
-// }

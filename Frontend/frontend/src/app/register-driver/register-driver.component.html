@@ -1,0 +1,31 @@
+<div class="body">
+  <div class="form">
+    <form class="example-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Name</mat-label>
+        <input formControlName="name" matInput  required>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Phone No</mat-label>
+        <input formControlName="phoneNo" matInput  required>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Address</mat-label>
+        <input formControlName="address" matInput  required>
+      </mat-form-field>
+       <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Email Id</mat-label>
+        <input formControlName="emailId" matInput  required>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="example-full-width" >
+        <mat-label>Password</mat-label>
+        <input formControlName="password" matInput type="password" required>
+      </mat-form-field>
+      <div >
+        <button mat-raised-button style="margin:0 0 0 43%"  color="warn">Submit</button>
+      </div>
+      <p style="text-align: center;color:red" *ngIf="valid">Form details are not valid</p>
+    </form> 
+  </div>  
+</div>
+   

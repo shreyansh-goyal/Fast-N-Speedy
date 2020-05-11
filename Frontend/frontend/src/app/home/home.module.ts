@@ -23,10 +23,13 @@ import {MatButtonModule} from '@angular/material/button';
 import { RestaurantComponent } from './restaurant/restaurant.component'; 
 import {MatExpansionModule} from '@angular/material/expansion'; 
 import {MatDividerModule} from '@angular/material/divider';
-
+import { DialogExampleComponent } from './dialog-example/dialog-example.component';
+import {MatDialogModule, MatTooltipModule } from '@angular/material';
+import {MatSnackBarModule} from '@angular/material/snack-bar'; 
+import {MatSelectModule} from '@angular/material/select'; 
 const routes:Routes=[
     {path:"",component:HomeComponent,children:[
-        {path:"",component:InHomeComponent},
+        {path:"scroll",component:InHomeComponent},
         {path:"search",component:SearchComponent},
         {path:"profile",component:ProfileComponent},
         {path:"restaurant/:id",component:RestaurantComponent},       
@@ -43,6 +46,7 @@ const routes:Routes=[
         filterPipe,
         ProfileComponent,
         RestaurantComponent,
+        DialogExampleComponent,
     ],
     imports:[
         NgbModule,
@@ -59,9 +63,16 @@ const routes:Routes=[
         MatButtonModule,
         MatExpansionModule,
         MatDividerModule,
+        MatDialogModule,
+        MatSnackBarModule,
+        MatTooltipModule,
+        MatSelectModule
+    ],
+    entryComponents:[
+        DialogExampleComponent
     ],
     exports:[
-        
+        DialogExampleComponent
     ],
     providers:[
         HomeService,

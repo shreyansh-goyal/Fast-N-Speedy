@@ -10,7 +10,7 @@ export class AuthInterceptor implements HttpInterceptor{
     intercept(req:HttpRequest<any>,next:HttpHandler):Observable<HttpEvent<any>>{
 
         console.log("correct request",req)
-        if(req.url.includes("auth"))
+        if(req.url.includes("auth")||req.url.includes("/verify/token"))
         {
             return next.handle(req);
         }

@@ -1,0 +1,20 @@
+<h2 mat-dialog-title>Rate The Restaurant</h2>
+<mat-dialog-content>
+  <mat-form-field style="width:100%">
+    <mat-label style="width:100%">Rating</mat-label>
+    <mat-select [(ngModel)]="rating" style="width:100%">
+      <mat-option  [value]="1">1</mat-option>
+      <mat-option  [value]="2">2</mat-option>
+      <mat-option  [value]="3">3</mat-option>
+      <mat-option  [value]="4">4</mat-option>
+      <mat-option  [value]="5">5</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field style="width:100%" class="example-full-width">
+    <textarea [(ngModel)]="feedback" style="width:100%" matInput placeholder="Leave the feedback "></textarea>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button (click)="cancel()" mat-button mat-dialog>Cancel</button>
+  <button (click)="rateRestaurant()" mat-button mat-dialog>Rate Restaurant</button>
+</mat-dialog-actions>

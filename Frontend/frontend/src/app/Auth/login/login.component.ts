@@ -3,8 +3,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LoginService } from './login.service';
 import { Router } from '@angular/router';
 import {Store} from "@ngrx/store";
-import * as AuthActions from "../store/auth.actions"
+import * as AuthActions from "../store/auth.actions";
 import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,10 +13,31 @@ import { Observable } from 'rxjs';
 })
 export class LoginComponent implements OnInit {
   loginForm:FormGroup;
-  constructor(private userLogin:LoginService,private router:Router,private store:Store<{User:{user:{}}}>) { }
+  constructor(private userLogin:LoginService,private router:Router,private store:Store<{User:{user:{}}}>,private http:HttpClient) { }
 
   ngOnInit() {
-
+    let array:any=document.cookie.split(';');
+    let storeData:any=JSON.parse(localStorage.getItem("user"));
+    console.log(storeData);
+    if(storeData.jwtToken)
+    {
+      this.http.post("http://localhost:1234/verify/token",{data:"xyz"},{headers:{"Authorization": `Bearer ${storeData.jwtToken}`}})
+      .subscribe(data=>{
+        console.log(data);
+        this.store.dispatch(new AuthActions.AddUser({
+          user:{
+            ...storeData
+        }}));
+        this.router.navigate(["/home"])
+      },
+      err=>{
+        this.router.navigate(["/auth","login"])
+      })
+    }
+    else
+    {
+      ;
+    }
     navigator.geolocation.getCurrentPosition(resp=>{
       console.log(resp);
       localStorage.setItem("latitude",JSON.stringify(resp.coords.latitude));
@@ -32,16 +54,24 @@ export class LoginComponent implements OnInit {
   {
     this.userLogin.userLogin(this.loginForm.value.emailId,this.loginForm.value.password)
     .subscribe(
-      (data)=>{
-        console.log("data is",data);
+      (data:{token})=>{
+      let x={
+        "jwtToken":data["token"],
+        ...data["user"].Details
+      }
+      localStorage.setItem("user",JSON.stringify(x))
         this.store.dispatch(new AuthActions.AddUser({
           user:{
             "jwtToken":data["token"],
             ...data["user"].Details 
         }}));
       },
-      (err)=>{alert(err.error.message)},
+      (err)=>{
+        alert(err.error.message);
+        console.log("there is some error");
+      },
       ()=>{
+        alert("Hello this is the message");
         this.router.navigate(['/home'])
       }
     )

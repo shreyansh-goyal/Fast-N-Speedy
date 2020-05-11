@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { RestaurantModel } from '../RestaurantModel/restaurant.model';
 import { HomeService } from '../home.service';
 import { CartService } from '../shared/cart.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-restaurant',
@@ -15,7 +16,7 @@ export class RestaurantComponent implements OnInit {
   image:Array<any>;
   orders:Array<any>=[];
   totalCost:number=0;
-  constructor(private route:ActivatedRoute,private home:HomeService,private router:Router,private cart:CartService) { }
+  constructor(private route:ActivatedRoute,private home:HomeService,private router:Router,private cart:CartService,private http:HttpClient) { }
 
   ngOnInit() {
     this.route.params.subscribe(
@@ -23,7 +24,6 @@ export class RestaurantComponent implements OnInit {
         this.restaurant=this.home.restaurants[params.id];
         this.activeImage=this.restaurant["Details"].innerPhoto.slice(0,1);
         this.image=this.restaurant["Details"].innerPhoto.slice(1);
-        console.log(this.image);
       }
     )
 

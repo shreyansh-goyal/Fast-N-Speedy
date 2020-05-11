@@ -1,6 +1,6 @@
 <div style="font-family: 'Titillium Web'">
 <div style="background-color: black;;">
-<div id="carouselExampleIndicators" style="width:50%;margin:0 auto;" class="carousel slide" data-ride="carousel">
+<div id="carouselExampleIndicators" style="margin:0 auto;" class="carousel slide pictures" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
     <li data-target="#carouselExampleIndicators" *ngFor="let item of image;let i=index" data-slide-to="i+1" class="active"></li>
@@ -23,62 +23,68 @@
   </a>
 </div>
 </div>
-<div style="background-color: #171a29;height:40vh;padding:2vw 2vh;"> 
+<div style="background-color: #171a29;" class="header"> 
   <mat-grid-list cols="4" rowHeight="100%">
     <mat-grid-tile
         [colspan]="1"
         [rowspan]="1">
-          <img [src]="restaurant['Details'].img" style="height:30vh;width:20vw;">
-
-
+          <img [src]="restaurant['Details'].img"  class="headerImage" >
     </mat-grid-tile>
     <mat-grid-tile
     [colspan]="3"
     [rowspan]="1"
     >
     <div style='width:100%;color:white;font-size: 3vh;'> 
-      <p style="font-size: 7vh;font-weight: 600;margin:0;">{{restaurant.Details.name}}</p > 
-       <span style="margin-right:20px;" *ngFor="let i of restaurant['Details'].foodTypeServed" >{{i}}</span >
-      <p>{{restaurant.Details.address}}</p>
-      <span>Ratings : {{restaurant.Details.rating}}</span>|<span>Cost For Two : {{restaurant.Details.costForTwo}}</span>
+      <p class="restaurantName">{{restaurant.Details.name}}</p > 
+       <span style="margin-right:20px;" class="restaurantDetails" *ngFor="let i of restaurant['Details'].foodTypeServed" >{{i}}</span >
+      <p class="restaurantDetails">{{restaurant.Details.address}}</p>
+      <span class="restaurantDetails">Ratings : {{restaurant.Details.rating}}</span>|<span class="restaurantDetails">Cost For Two : {{restaurant.Details.costForTwo}}</span>
     </div>
   </mat-grid-tile>
   </mat-grid-list> 
 </div>
     <div style="background-color:#dfdfdf;padding:2vh;min-height: 50vh;">
-        <div style="width:60%;float:left">
+        <div class="menu">
         <mat-expansion-panel *ngFor="let type of restaurant.Details.menu" style="width:100%">
           <mat-expansion-panel-header>
              <mat-panel-title >
-               <p style="text-align:center;width:100%;font-size:20px;font-weight: 600;">{{type.type}}</p>
+               <p style="text-align:center;width:100%;font-weight: 600;" class="matPanel">{{type.type}}</p>
              </mat-panel-title>
           </mat-expansion-panel-header>
           <div *ngFor="let dish of type.dishes" (click)="addToCart(dish)" class="dishes" style="clear:both;"> 
-            <span style="float:left;">{{dish.food}}</span>
-            <span style="float:right;">{{dish.price}}</span>
+            <span class="restaurantDetails"  style="float:left;">{{dish.food}}</span>
+            <span class="restaurantDetails" style="float:right;">{{dish.price}}</span>
           </div>
        </mat-expansion-panel>
       </div>
-      <div style="width:38%;float:right;">
+      <div class="cart" >
         <mat-card *ngIf="orders.length" style="width:100%;">
-          <p style="font-size: 25px;text-align: center;font-weight: 800;">Cart</p>
-          <div *ngFor="let order of orders;let i=index;" style="margin:20px 0px;">
+          <p style="text-align: center;font-weight: 800;" class="matPanel">Cart</p>
+          <div *ngFor="let order of orders;let i=index;"  class="restaurantDetails" style="margin:20px 0px;">
               {{order.food}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{order.price}}&nbsp;&nbsp;&nbsp;
               <span style="position: absolute;right:10px;">
-              <button style="width:40px;height:40px;" (click)="increaseQuantity(i)" mat-mini-fab color="primary">+</button>
+              <button class="cart-button" (click)="increaseQuantity(i)" mat-mini-fab color="primary">+</button>
               {{order.quantity}}
-              <button style="width:40px;height:40px;" (click)="decreaseQuantity(i)"  mat-mini-fab color="primary">-</button>
+              <button class="cart-button" (click)="decreaseQuantity(i)"  mat-mini-fab color="primary">-</button>
               </span>
           </div>
           <mat-divider style="width:80%;margin-left: 10%;margin-top:10px;"></mat-divider>
-          <div style="margin-top:50px;">
+          <div class="restaurantDetails" style="margin-top:50px;">
               Total : {{totalCost}}
-              <button (click)="goToCart()" style="position: absolute;right:10px;" mat-raised-button color="primary">Go To Cart</button>
+              <button (click)="goToCart()" style="position: absolute;right:10px;bottom:10px;" class="cart-button-1" mat-raised-button color="primary">Go To Cart</button>
           </div>
         </mat-card>
       </div> 
-      <div style="height:100vh;">
-
+      <div style="height:60vh;clear:both;color:#262626;">
+        <p style="text-align: center;font-size:25px;font-weight:800;">Restaurant Reviews</p>
+        <mat-card style="margin:20px 0px;" *ngFor="let review of restaurant.Details.allReviews">
+          <div>
+              <span style="font-weight: 600;">Reviewer Name</span> : <span>{{review.name}}</span>
+          </div>
+          <div>
+              <span style="font-weight: 600;">Description</span> : <span>{{review.review}}</span>
+          </div>
+        </mat-card>
       </div>
     </div>
 </div>

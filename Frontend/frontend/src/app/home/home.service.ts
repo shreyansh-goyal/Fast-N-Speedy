@@ -13,8 +13,10 @@ export class HomeService{
     }
     setRestaurants(data)
     {
-        console.log(data);
         this.restaurants=data;
-        console.log(this.restaurants);
+    }
+    getBanners()
+    {
+        return this.http.get("http://localhost:1234/getbanners")
     }
 }

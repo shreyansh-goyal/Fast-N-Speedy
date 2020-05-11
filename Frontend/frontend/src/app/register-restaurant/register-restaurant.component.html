@@ -1,0 +1,81 @@
+<div class="body">
+  <div class="form">
+    <form class="example-form"  enctype="multipart/form-data" [formGroup]="registerForm" (ngSubmit) ="onSubmit()">
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Name</mat-label>
+        <input  matInput formControlName="name" required>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Phone No</mat-label>
+        <input  matInput formControlName="phoneNo"  required>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Address</mat-label>
+        <input  matInput formControlName="address"  required>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Landmark</mat-label>
+        <input  matInput formControlName="landmark"  required>
+      </mat-form-field>  
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Cost for two</mat-label>
+        <input  matInput formControlName="costForTwo"  required>
+      </mat-form-field>
+      <p class="form-heading">Upload the Main Image</p>
+      <input  (change)="onFileChange($event,'img')" type="file" >
+      <button (click)="UploadPhoto('img')" type="button">Upload</button>
+      <p class="form-heading">Upload Cusine 1</p>
+      <input  (change)="onFileChange($event,'innerPhoto1')" type="file">
+      <button (click)="UploadPhoto('innerPhoto1')" type="button">Upload</button>
+      <p class="form-heading">Upload Cusine 2</p>
+      <input  (change)="onFileChange($event,'innerPhoto2')" type="file">
+      <button (click)="UploadPhoto('innerPhoto2')" type="button">Upload</button>
+      <p class="form-heading">Upload Cusine 3</p>
+      <input  (change)="onFileChange($event,'innerPhoto3')" type="file">
+      <button (click)="UploadPhoto('innerPhoto3')" type="button">Upload</button>
+      <div formArrayName="foodTypeServed">
+        <p class="form-heading">Food Type Served</p>
+        <div>
+          <button (click)="addNewField()" type="button" class="btn btn-danger">Add new field</button>
+          <!-- <div class="container cusine" *ngFor="let foodType of registerForm.get('foodTypeServed').controls;let i=index">
+            <mat-form-field appearance="outline" class="example-full-width">
+              <mat-label>Food Type</mat-label>
+              <input  matInput [formControlName]="i">
+            </mat-form-field> 
+          </div> -->
+        </div>
+      </div>
+      <p class="form-heading">Cusine In Restaurant</p>
+      <div formArrayName="menu">
+        <button class="btn btn-danger" type="button" (click)="AddCusine()">Add Cusine</button>
+        <div class="cusine" *ngFor="let dish of getDishType('menu');let i = index">
+            <div [formGroupName]="i">
+              <mat-form-field appearance="outline" class="example-full-width">
+                <mat-label>Cusine Origin</mat-label>
+                <input  matInput formControlName="type">
+              </mat-form-field>
+              <div formArrayName="dishes">
+                  <button type="button" class="btn btn-danger" (click)="AddDish(i)">Add Dishes</button> 
+                   <div *ngFor="let dish of getDishControl(i);let m = index">
+                    <div [formGroupName]="m">
+                        <mat-form-field  appearance="outline" class="food">
+                          <mat-label>Food Name</mat-label>
+                          <input (change)="hello()"  matInput formControlName="food" >
+                        </mat-form-field>
+                        <mat-form-field  appearance="outline" class="price">
+                          <mat-label>Price</mat-label>
+                          <input  matInput formControlName="price">
+                        </mat-form-field>
+                    </div>
+                  </div>  
+              </div>
+            </div>
+        </div>       
+      </div>
+      <div style="width:100%;">
+      <button type="submit" class="center btn btn-primary">Submit Form</button>
+      </div>
+    </form> 
+  </div>
+</div>
+   

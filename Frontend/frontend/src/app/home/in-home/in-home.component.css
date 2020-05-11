@@ -2,3 +2,30 @@
     cursor: pointer;
     margin:2vw 0;
 }
+@media screen and (max-width: 600px) {
+    .mainImage{
+        border-radius:2px;
+        width:30vw;
+        height:20vh
+    }
+    .foodTypeServed{
+        margin:0px;
+    }
+    .restaurantName{
+        line-height: 18px;
+    }
+}
+@media screen and (min-width: 600px) {
+    .mainImage{
+        border-radius:2px;
+        width:26vw;
+        height:25vh
+    }
+    .foodTypeServed{
+        margin:10px 0px;
+    }
+    .restaurantName{
+        line-height: 20px;;
+    }
+}
+

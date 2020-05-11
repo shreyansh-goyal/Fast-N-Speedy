@@ -1,58 +1,81 @@
 <div>
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img class="d-block w-100" [src]="activeImage[0]" style="height:35vh" alt="First slide">
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img class="d-block w-100 first" [src]="activeImage[0]" style="height:35vh" alt="First slide">
+      </div>
+      <div class="carousel-item" *ngFor="let item of images" >
+        <img class="d-block w-100 other" style="height:35vh" [src]="item" alt="Second slide">
+      </div>
     </div>
-    <div class="carousel-item" *ngFor="let item of images" style="height:35vh">
-      <img class="d-block w-100" [src]="item" alt="Second slide">
-    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
   <div style="width:90%;margin:10px auto">
-          <mat-card (click)="loadRestaurant(i)" mat-ripple *ngFor="let restaurant of restaurants;let i = index;"  class="restaurant-card">
-              <mat-grid-list cols="5" rowHeight="32vh">
-                  <mat-grid-tile [colspan]="2" [rowspan]="1">
-                      <img style="border-radius:2px;width:26vw;height:25vh" [src]="restaurant.Details.img" alt="">
-                  </mat-grid-tile>
-                  <mat-grid-tile [colspan]="3" [rowspan]="1">
-                      <div style="width:100%;">
-                          <p style="font-family: 'Titillium Web', sans-serif;font-weight:800;font-size:20px;line-height:20px;margin:0px;width:100%">{{restaurant.Details.name}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-                          <span style="font-family: 'Titillium Web', sans-serif;font-size:15px;margin:10px 0px" *ngFor="let food of restaurant.Details.foodTypeServed">{{food}}&nbsp;&nbsp;</span>
-                          <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                          <div style="display:flex;justify-content:space-between;margin:10px 0px;">
-                              <div style="font-family: 'Titillium Web';text-align: center;line-height: 30px;display:inline-block;background-color:#db7c38;color:white;padding:0px 5px">
-                                  <div>
-                                      <span ><mat-icon aria-hidden="false" style="color:white;position:relative;top:0.7vh"  aria-label="Example home icon">star</mat-icon> {{restaurant.Details.rating}}</span>
-                                  </div>
-                              </div>
-                              <div style="line-height:30px;text-align:center;">
-                                  .
-                              </div>
-                              <div style="font-family: 'Titillium Web';">
-                                  <span style="line-height: 40px;text-align: center;">{{restaurant.Details.costForTwo}}</span>
-                              </div>
-                          </div>
-                          <div class="rotate" style="padding:10px 0px;border-top:1px solid #E9E9EB;text-align:center;border-bottom:1px solid #E9E9EB;color:#8a584b">
-                              <svg  xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 172 172" style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#8a584b"><path d="M65.5918,14.34733c-2.81885,-0.17838 -5.60982,1.27477 -7.0127,3.91927l-9.19629,17.34277l-19.3304,3.38737c-3.9345,0.688 -6.60588,4.37245 -6.04688,8.32845l2.74349,19.42839l-13.64746,14.09538c-2.78067,2.87383 -2.78067,7.42825 0,10.30208l13.64746,14.10938l-2.74349,19.42839c-0.559,3.95599 2.11238,7.63328 6.04688,8.32845l19.3304,3.38737l9.19629,17.32878c1.8705,3.526 6.20768,4.94724 9.79818,3.1914l17.62272,-8.6224l17.63672,8.6084c3.59049,1.75583 7.90651,0.34859 9.78418,-3.17741l9.19629,-17.32878l19.33041,-3.38737c3.9345,-0.688 6.61987,-4.38645 6.06087,-8.34245l-2.74349,-19.42838l13.64746,-14.09538c2.75917,-2.86667 2.7595,-7.42825 -0.014,-10.30208l-13.64746,-14.10937l2.74349,-19.42839c0.559,-3.956 -2.12638,-7.63328 -6.06087,-8.32845l-19.33041,-3.38737l-9.19629,-17.32878c-1.86333,-3.51883 -6.18685,-4.93324 -9.77018,-3.17741l-17.63672,8.6084l-17.63672,-8.6084c-0.89583,-0.43896 -1.83187,-0.6824 -2.77148,-0.74186zM64.5,50.16667c7.91917,0 14.33333,6.41417 14.33333,14.33333c0,7.91917 -6.41417,14.33333 -14.33333,14.33333c-7.91917,0 -14.33333,-6.41417 -14.33333,-14.33333c0,-7.91917 6.41417,-14.33333 14.33333,-14.33333zM103.2028,54.11393l8.5944,6.4388l-43,57.33333l-8.5944,-6.43881zM64.5,57.33333c-3.95804,0 -7.16667,3.20863 -7.16667,7.16667c0,3.95804 3.20863,7.16667 7.16667,7.16667c3.95804,0 7.16667,-3.20863 7.16667,-7.16667c0,-3.95804 -3.20863,-7.16667 -7.16667,-7.16667zM107.5,93.16667c7.91917,0 14.33333,6.41417 14.33333,14.33333c0,7.91917 -6.41417,14.33333 -14.33333,14.33333c-7.91917,0 -14.33333,-6.41417 -14.33333,-14.33333c0,-7.91917 6.41417,-14.33333 14.33333,-14.33333zM107.5,100.33333c-3.95804,0 -7.16667,3.20863 -7.16667,7.16667c0,3.95804 3.20863,7.16667 7.16667,7.16667c3.95804,0 7.16667,-3.20863 7.16667,-7.16667c0,-3.95804 -3.20863,-7.16667 -7.16667,-7.16667z"></path></g></g></svg>  35 % OFF
-                          </div>
-                      </div>
-                  </mat-grid-tile> 
-              </mat-grid-list>                  
-          </mat-card>
+    <mat-card (click)="loadRestaurant(i)" mat-ripple *ngFor="let restaurant of restaurants;let i = index;"
+      class="restaurant-card">
+      <mat-grid-list cols="5" rowHeight="32vh">
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <img class="mainImage" [src]="restaurant.Details.img" alt="">
+        </mat-grid-tile>
+        <mat-grid-tile  [colspan]="3" [rowspan]="1">
+          <div style="width:100%;word-wrap: break-word;">
+            <p
+              class="restaurantName"
+              style="font-family: 'Titillium Web', sans-serif;font-weight:800;font-size:20px;margin:0px;width:100%">
+              {{restaurant.Details.name}}
+            </p>
+            <span class="foodTypeServed" style="font-family: 'Titillium Web', sans-serif;font-size:15px;"
+              *ngFor="let food of restaurant.Details.foodTypeServed">{{food}} </span>
+            <div style="display:flex;justify-content:space-between;margin:10px 0px;">
+              <div
+                style="font-family: 'Titillium Web';text-align: center;line-height: 30px;display:inline-block;background-color:#db7c38;color:white;padding:0px 5px">
+                <div>
+                  <span>
+                    <mat-icon aria-hidden="false" style="color:white;position:relative;top:0.7vh"
+                      aria-label="Example home icon">star</mat-icon> {{restaurant.Details.rating}}
+                  </span>
+                </div>
+              </div>
+              <div style="line-height:30px;text-align:center;">
+                .
+              </div>
+              <div style="font-family: 'Titillium Web';">
+                <span style="line-height: 40px;text-align: center;">{{restaurant.Details.costForTwo}}</span>
+              </div>
+            </div>
+            <div class="rotate"
+              style="padding:10px 0px;border-top:1px solid #E9E9EB;text-align:center;border-bottom:1px solid #E9E9EB;color:#8a584b">
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 172 172"
+                style=" fill:#000000;">
+                <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                  stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+                  font-family="none" font-weight="none" font-size="none" text-anchor="none"
+                  style="mix-blend-mode: normal">
+                  <path d="M0,172v-172h172v172z" fill="none"></path>
+                  <g fill="#8a584b">
+                    <path
+                      d="M65.5918,14.34733c-2.81885,-0.17838 -5.60982,1.27477 -7.0127,3.91927l-9.19629,17.34277l-19.3304,3.38737c-3.9345,0.688 -6.60588,4.37245 -6.04688,8.32845l2.74349,19.42839l-13.64746,14.09538c-2.78067,2.87383 -2.78067,7.42825 0,10.30208l13.64746,14.10938l-2.74349,19.42839c-0.559,3.95599 2.11238,7.63328 6.04688,8.32845l19.3304,3.38737l9.19629,17.32878c1.8705,3.526 6.20768,4.94724 9.79818,3.1914l17.62272,-8.6224l17.63672,8.6084c3.59049,1.75583 7.90651,0.34859 9.78418,-3.17741l9.19629,-17.32878l19.33041,-3.38737c3.9345,-0.688 6.61987,-4.38645 6.06087,-8.34245l-2.74349,-19.42838l13.64746,-14.09538c2.75917,-2.86667 2.7595,-7.42825 -0.014,-10.30208l-13.64746,-14.10937l2.74349,-19.42839c0.559,-3.956 -2.12638,-7.63328 -6.06087,-8.32845l-19.33041,-3.38737l-9.19629,-17.32878c-1.86333,-3.51883 -6.18685,-4.93324 -9.77018,-3.17741l-17.63672,8.6084l-17.63672,-8.6084c-0.89583,-0.43896 -1.83187,-0.6824 -2.77148,-0.74186zM64.5,50.16667c7.91917,0 14.33333,6.41417 14.33333,14.33333c0,7.91917 -6.41417,14.33333 -14.33333,14.33333c-7.91917,0 -14.33333,-6.41417 -14.33333,-14.33333c0,-7.91917 6.41417,-14.33333 14.33333,-14.33333zM103.2028,54.11393l8.5944,6.4388l-43,57.33333l-8.5944,-6.43881zM64.5,57.33333c-3.95804,0 -7.16667,3.20863 -7.16667,7.16667c0,3.95804 3.20863,7.16667 7.16667,7.16667c3.95804,0 7.16667,-3.20863 7.16667,-7.16667c0,-3.95804 -3.20863,-7.16667 -7.16667,-7.16667zM107.5,93.16667c7.91917,0 14.33333,6.41417 14.33333,14.33333c0,7.91917 -6.41417,14.33333 -14.33333,14.33333c-7.91917,0 -14.33333,-6.41417 -14.33333,-14.33333c0,-7.91917 6.41417,-14.33333 14.33333,-14.33333zM107.5,100.33333c-3.95804,0 -7.16667,3.20863 -7.16667,7.16667c0,3.95804 3.20863,7.16667 7.16667,7.16667c3.95804,0 7.16667,-3.20863 7.16667,-7.16667c0,-3.95804 -3.20863,-7.16667 -7.16667,-7.16667z">
+                    </path>
+                  </g>
+                </g>
+              </svg> 35 % OFF
+            </div>
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </mat-card>
   </div>
   <div style="height:20vh">
 

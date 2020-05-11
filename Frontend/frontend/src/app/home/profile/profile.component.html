@@ -1,16 +1,28 @@
-<div style="width:25%;height:80%;background-color: black;float:left;font-family: 'Titillium Web'">
-  <div style="margin:5% auto;height:14vh;width:7vw;border:4px solid white;padding:12px;padding-left:15px;border-radius:50px; "><mat-icon  style="color:white;font-size: 50px;" aria-hidden="false" class="icon" aria-label="Example home icon">person</mat-icon></div>
-  <p style="width:100%;color:white;text-align:center;"> Name : Shreyansh Goyal</p>
-  <p style="width:100%;color:white;text-align:center;">Mobile Number: 1010101010</p>
-  <p style="width:100%;color:white;text-align:center;">Address : D-10/45 sector-8 Rohini</p>
-  <div style="position: relative;height:50%;font-family: 'Titillium Web'">
-     <button (click)="logout()"  mat-raised-button color="primary" style="position:absolute;bottom: 0;display: inline-block;margin-left:36%; ">Log Out</button>
-  </div>
+<div style="width:25%;height:80vh;background-color: black;float:left;font-family: 'Titillium Web';position:fixed;">
+  <div class="icony"><mat-icon  style="color:white;font-size: 50px;" aria-hidden="false" class="icon" aria-label="Example home icon">person</mat-icon></div>
+  <p style="width:100%;color:white;text-align:center;"> Name : {{user.name}}</p>
+  <p style="width:100%;color:white;text-align:center;">Mobile Number: {{user.phoneNo}}</p>
+  <p style="width:100%;color:white;text-align:center;">Address : {{user.address}}</p>
+     <button (click)="logout()" class="logout-button-1" mat-raised-button color="primary" >Log Out</button>
+     <button (click)="logout()" class="logout-button-2" mat-raised-button color="primary" >Log Out</button>
 </div>
 
-<div style="width:74%;float:right;">
-  <h2 style="text-align:center;font-family: 'Titillium Web'">Your Previous Orders</h2>
-  <mat-card>  
-
+<div style="width:74%;float:right;font-family: 'Titillium Web';overflow-y:scroll;max-height:80vh;">
+  <h2 style="text-align:center;">Your Previous Orders</h2>
+  <mat-card *ngFor="let orders of ordersData;let i=index;" (click)="openDialog(orders.Details)" mat-ripple  style="margin-right:10px;margin-top:20px;">  
+    <div  style="margin:20px 0px;">
+      <p style="font-size:20px;font-weight:800;text-align: center;">{{orders.Details.restaurantName}}</p>
+      <div style="display: flex;justify-content: space-between;"> 
+        <span>Dish Name</span>
+        <span>Dish Price</span>
+        <span >Dish Quantity</span>
+      </div>
+      <div *ngFor="let order of orders.Details.order" style="display: flex;justify-content: space-between;">
+          <span>{{order.food}}</span>
+          <span>{{order.price}}</span>
+          <span >{{order.quantity}}</span>
+      </div>
+      <span>Total Cost : {{orders.Details.totalCost}}</span>
+  </div>    
   </mat-card>  
 </div>

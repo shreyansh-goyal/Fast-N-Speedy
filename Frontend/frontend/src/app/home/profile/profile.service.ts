@@ -6,18 +6,8 @@ export class ProfileService{
     constructor(private http:HttpClient){
         
     }
-    getOrders()
+    getOrders(userId)
     {
-        this.http.get("http://localhost:1234/orders").subscribe(
-            (data:any)=>{
-                this.previousOrders=data.orders;
-            },
-            (err)=>{
-                console.log(err)
-            }, 
-            ()=>{
-                console.log("Completed")
-            }
-        )
+        return this.http.get(`http://localhost:1234/order?userId=${userId}`);
     }
 }

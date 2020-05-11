@@ -18,7 +18,7 @@ import {HomeModule} from "./home/home.module";
 import { LoginComponent } from './Auth/login/login.component';
 import { LoginService } from './Auth/login/login.service';
 import {CarouselModule} from 'primeng/carousel';
-import { AuthComponent } from './Auth/auth/auth.component';
+import { AuthComponent } from './Auth/auth/auth.component'
 import {StoreModule} from "@ngrx/store";
 import { AuthReducer } from './Auth/store/auth.reducer';
 import { AuthInterceptor } from './shared/auth.interceptor';
@@ -33,6 +33,12 @@ import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { DeliveryComponent } from './DeliveryBoy/delivery/delivery.component';
 import { DeliveryLoginComponent } from './Auth/delivery-login/delivery-login.component';
 import { AgmDirectionModule } from 'agm-direction';
+import { RegisterRestaurantComponent } from './register-restaurant/register-restaurant.component';
+import { RegisterDriverComponent } from './register-driver/register-driver.component';
+import { RegisterComponent } from './register/register.component';
+import { AdminLoginComponent } from './Auth/admin-login/admin-login.component';
+import { AdminPageComponent } from './Auth/admin-page/admin-page.component';
+import { AuthGuard } from './auth.guard';
 const config: SocketIoConfig = { url: 'http://localhost:1234', options: {} };
 
 
@@ -46,6 +52,11 @@ const config: SocketIoConfig = { url: 'http://localhost:1234', options: {} };
     CartComponent,
     DeliveryComponent,
     DeliveryLoginComponent,
+    RegisterRestaurantComponent,
+    RegisterDriverComponent,
+    RegisterComponent,
+    AdminLoginComponent,
+    AdminPageComponent,
   ],
   imports: [
     SocketIoModule.forRoot(config),
@@ -77,6 +88,7 @@ const config: SocketIoConfig = { url: 'http://localhost:1234', options: {} };
     VerifyService,
     LoginService,
     CartService,
+    AuthGuard,
     {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true}
   ],
   bootstrap: [AppComponent]

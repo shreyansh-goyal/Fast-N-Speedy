@@ -28,18 +28,20 @@ export class DeliveryComponent implements OnInit {
 
   ngOnInit() {
     navigator.geolocation.watchPosition(function(position) {
+            console.log(position);
+            let latitude=position.coords.latitude;
+            let longitude=position.coords.longitude;
             if(this.restaurantData)
             {
-
                 this.dir.origin = {
                   lat: position.coords.latitude, lng:position.coords.longitude
                 }
-                console.log(this.dir);
                 if(this.latitude!=position.coords.latitude||this.longitude!=position.coords.longitude)
                 {
                   this.latitude=position.coords.latitude;
                   this.longitude=position.coords.longitude;
-                  this.socket.emit("changeDriverLocation",{user:this.user,coordinates:this.position.coords});
+                  this.socket.emit("changeDriverLocation",{user:this.user,coordinates:{latitude,longitude}});
+                  
                 }
                 if(this.path=="restaurant"&&this.dir.destination.lat==this.dir.origin.lat&&this.dir.destination.lng==this.dir.origin.lng)
                 {
@@ -72,10 +74,6 @@ export class DeliveryComponent implements OnInit {
                   console.log(i);
                   this.totalCost+=i.price*i.quantity;
                 }
-                navigator.geolocation.getCurrentPosition(function(position){
-                  this.latitude=position.coords.latitude
-                  this.longitude=position.coords.longitude;
-                }.bind(this))
                 this.dir = {
                   origin: { lat: this.latitude, lng: this.longitude },
                   destination: { lat: this.restaurant.Details.latitude, lng:  this.restaurant.Details.longitude }
@@ -107,7 +105,7 @@ export class DeliveryComponent implements OnInit {
   }
   delivered(){
     this.reachedCustomer=false;
-    // this.restaurantData=false;
-    this.socket.emit("delivered",{user:this.user,customer:this.customer,order:this.orders})
+    console.log(this.restaurant);
+    this.socket.emit("delivered",{user:this.user,customer:this.customer,order:this.orders,restaurant:this.restaurant,totalCost:this.totalCost})
   }
 }
