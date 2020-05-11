@@ -69,29 +69,30 @@ export class InHomeComponent implements OnInit {
     this.home.getRestaurants().subscribe(
       (data:any)=>{
         let x=[];
-        for(let i of data)
-        {
-          let lat1=i.Details.latitude;
-          let lon1=i.Details.longitude;
-          let lat2=this.user.latitude;
-          let lon2=this.user.longitude;
-          var R = 6371;
-          var dLat = (3.14*(lat2-lat1))/180;
-          var dLon = (3.14*(lon2-lon1))/180; 
-          var a = 
-            Math.sin(dLat/2) * Math.sin(dLat/2) +
-            Math.cos((3.14*(lat1))/180) * Math.cos((3.14*(lat2))/180) * 
-            Math.sin(dLon/2) * Math.sin(dLon/2); 
-          var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-          var d = R * c;
-          console.log(d);
-          if(d<25)
-          {
-            x.push(i);
-          }
-        }
-        this.home.setRestaurants(x);
-        this.restaurants=[...x];        
+        // for(let i of data)
+        // {
+        //   let lat1=i.Details.latitude;
+        //   let lon1=i.Details.longitude;
+        //   let lat2=this.user.latitude;
+        //   let lon2=this.user.longitude;
+        //   var R = 6371;
+        //   var dLat = (3.14*(lat2-lat1))/180;
+        //   var dLon = (3.14*(lon2-lon1))/180; 
+        //   var a = 
+        //     Math.sin(dLat/2) * Math.sin(dLat/2) +
+        //     Math.cos((3.14*(lat1))/180) * Math.cos((3.14*(lat2))/180) * 
+        //     Math.sin(dLon/2) * Math.sin(dLon/2); 
+        //   var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+        //   var d = R * c;
+        //   console.log(d);
+        //   if(d<25)
+        //   {
+        //     x.push(i);
+        //   }
+        // }
+        // this.home.setRestaurants(x);
+        // this.restaurants=[...x];
+        this.restaurants=data;        
     },
     (err)=>{
       console.log(err);
