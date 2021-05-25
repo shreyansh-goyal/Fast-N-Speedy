@@ -15,7 +15,7 @@ User panel is responsible for showing all the restaurants near the user present 
 
 ### Delivery Partner Panel
 Delivery Partner panel is responsible to distributing orders to different delivery partners.It provide the functionality of showing the required path to be traced by delivery partners for their journey of successfully delivering the order.
- 
+
 ## Technical Stack
 1. Angular
 2. Node JS
@@ -26,3 +26,6 @@ Delivery Partner panel is responsible to distributing orders to different delive
 7. Mongo DB
 
 ## Project 
+
+### Login Panel
+![alt text](https://github.com/shreyansh-goyal/Project-Snapshot/blob/main/Food_ordering_application/UserLogin.PNG "Logo Title Text 1")
