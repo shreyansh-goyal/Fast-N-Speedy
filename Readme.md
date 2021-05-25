@@ -29,17 +29,28 @@ Delivery Partner panel is responsible to distributing orders to different delive
 
 ### Login Panel
 ![alt text](https://github.com/shreyansh-goyal/Project-Snapshot/blob/main/Food_ordering_application/UserLogin.PNG "Login Panel")
+
 ![alt text](https://github.com/shreyansh-goyal/Project-Snapshot/blob/main/Food_ordering_application/UserLogin2.PNG "Login Panel")
 
 ### User Panel
-![alt text](https://github.com/shreyansh-goyal/Project-Snapshot/blob/main/Food_ordering_application/MainPage.PNG "Login Panel")
-![alt text](https://github.com/shreyansh-goyal/Project-Snapshot/blob/main/Food_ordering_application/SearchPage.PNG "Login Panel")
-![alt text](https://github.com/shreyansh-goyal/Project-Snapshot/blob/main/Food_ordering_application/Restaurant_Page.PNG "Login Panel")
-![alt text](https://github.com/shreyansh-goyal/Project-Snapshot/blob/main/Food_ordering_application/Restaurant_Page2.PNG "Login Panel")
-![alt text](https://github.com/shreyansh-goyal/Project-Snapshot/blob/main/Food_ordering_application/Rating_Page.PNG "Login Panel")
-![alt text](https://github.com/shreyansh-goyal/Project-Snapshot/blob/main/Food_ordering_application/Cart_Page.PNG "Login Panel")
-![alt text](https://github.com/shreyansh-goyal/Project-Snapshot/blob/main/Food_ordering_application/Cart_Page3.PNG "Login Panel")
+![alt text](https://github.com/shreyansh-goyal/Project-Snapshot/blob/main/Food_ordering_application/MainPage.PNG "User Panel")
+
+![alt text](https://github.com/shreyansh-goyal/Project-Snapshot/blob/main/Food_ordering_application/SearchPage.PNG "User Panel")
+
+![alt text](https://github.com/shreyansh-goyal/Project-Snapshot/blob/main/Food_ordering_application/Restaurant_Page.PNG "User Panel")
+
+![alt text](https://github.com/shreyansh-goyal/Project-Snapshot/blob/main/Food_ordering_application/Restaurant_Page2.PNG "User Panel")
+
+![alt text](https://github.com/shreyansh-goyal/Project-Snapshot/blob/main/Food_ordering_application/Rating_Page.PNG "User Panel")
+
+![alt text](https://github.com/shreyansh-goyal/Project-Snapshot/blob/main/Food_ordering_application/Cart_Page.PNG "User Panel")
+
+![alt text](https://github.com/shreyansh-goyal/Project-Snapshot/blob/main/Food_ordering_application/Cart_Page3.PNG "User Panel")
 
 ### Admin Panel
-![alt text](https://github.com/shreyansh-goyal/Project-Snapshot/blob/main/Food_ordering_application/Admin_Panel.PNG "Login Panel")
-![alt text](https://github.com/shreyansh-goyal/Project-Snapshot/blob/main/Food_ordering_application/Register_Restaurant.PNG "Login Panel")
+![alt text](https://github.com/shreyansh-goyal/Project-Snapshot/blob/main/Food_ordering_application/Admin_Panel.PNG "Admin Panel")
+
+![alt text](https://github.com/shreyansh-goyal/Project-Snapshot/blob/main/Food_ordering_application/Register_Restaurant.PNG "Admin Panel")
+
+### Delivery Partner Panel
+![alt text](https://github.com/shreyansh-goyal/Project-Snapshot/blob/main/Food_ordering_application/delivery%20Partner.PNG "Delivery Partner Panel")
