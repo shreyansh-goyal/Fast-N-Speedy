@@ -64,3 +64,8 @@ Delivery Partner panel is responsible to distributing orders to different delive
 ### Delivery Partner Panel
 
 ![alt text](https://github.com/shreyansh-goyal/Project-Snapshot/blob/main/Food_ordering_application/delivery%20Partner.PNG "Delivery Partner Panel")
+
+## Project Video Link
+Complete Explanation:-https://drive.google.com/file/d/1BuN6KcOUcro2-b7KrEFp6UjuUDzkYxkK/view?usp=sharing
+
+Short Video:-https://drive.google.com/file/d/1jIgVXubGMqw_S5fgmfJE7FKBGGVVhATe/view?usp=sharing
