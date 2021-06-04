@@ -52,24 +52,15 @@ Delivery Partner panel is responsible to distributing orders to different delive
 <img style="display:inline-block;" alt="Login Panel" src="https://github.com/shreyansh-goyal/Project-Snapshot/blob/main/Food_ordering_application/Cart_Page3.PNG" height="200" width="400"  />
 
 </div>
-![alt text]( "User Panel")
-
-![alt text]( "User Panel")
-
-![alt text]( "User Panel")
-
-![alt text]( "User Panel")
-
-![alt text]( "User Panel")
-
-![alt text]( "User Panel")
-
-![alt text]( "User Panel")
 
 ### Admin Panel
-![alt text](https://github.com/shreyansh-goyal/Project-Snapshot/blob/main/Food_ordering_application/Admin_Panel.PNG "Admin Panel")
+<div>
+<img style="display:inline-block;" alt="Login Panel" src="https://github.com/shreyansh-goyal/Project-Snapshot/blob/main/Food_ordering_application/Admin_Panel.PNG" height="200" width="400"  />
 
-![alt text](https://github.com/shreyansh-goyal/Project-Snapshot/blob/main/Food_ordering_application/Register_Restaurant.PNG "Admin Panel")
+<img style="display:inline-block;" alt="Login Panel" src="https://github.com/shreyansh-goyal/Project-Snapshot/blob/main/Food_ordering_application/Register_Restaurant.PNG" height="200" width="400"  />
+</div>
+
 
 ### Delivery Partner Panel
+
 ![alt text](https://github.com/shreyansh-goyal/Project-Snapshot/blob/main/Food_ordering_application/delivery%20Partner.PNG "Delivery Partner Panel")
