@@ -30,9 +30,9 @@ Delivery Partner panel is responsible to distributing orders to different delive
 ### Login Panel
 
 <div>
-<img style="display:inline-block;" alt="Login Panel" src="https://github.com/shreyansh-goyal/Project-Snapshot/blob/main/Food_ordering_application/UserLogin.PNG" width="300"  />
+<img style="display:inline-block;" alt="Login Panel" src="https://github.com/shreyansh-goyal/Project-Snapshot/blob/main/Food_ordering_application/UserLogin.PNG" width="600"  />
 
-<img style="display:inline-block;" alt="Login Panel" src="https://github.com/shreyansh-goyal/Project-Snapshot/blob/main/Food_ordering_application/UserLogin2.PNG" width="300"  />
+<img style="display:inline-block;" alt="Login Panel" src="https://github.com/shreyansh-goyal/Project-Snapshot/blob/main/Food_ordering_application/UserLogin2.PNG" width="600"  />
 </div>
 
 ### User Panel
