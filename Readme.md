@@ -28,7 +28,8 @@ Delivery Partner panel is responsible to distributing orders to different delive
 ## Project 
 
 ### Login Panel
-![alt text](https://github.com/shreyansh-goyal/Project-Snapshot/blob/main/Food_ordering_application/UserLogin.PNG=100x "Login Panel")
+<img alt="Login Panel" src="https://github.com/shreyansh-goyal/Project-Snapshot/blob/main/Food_ordering_application/UserLogin.PNG" width="200" height="200" />
+
 
 ![alt text](https://github.com/shreyansh-goyal/Project-Snapshot/blob/main/Food_ordering_application/UserLogin2.PNG "Login Panel")
 
