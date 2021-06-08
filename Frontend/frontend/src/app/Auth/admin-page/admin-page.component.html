@@ -3,7 +3,7 @@
     <form class="example-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <h2 style="text-align: center;">Banners</h2>
       <div formArrayName="banners">
-        <div class="form-group" *ngFor="let element of loginForm.get('banners').controls;let i = index">
+        <div class="form-group" *ngFor="let element of loginForm.get('banners')?.controls;let i = index">
           <label for="exampleInputEmail1">Banner {{i}}</label>
           <input type="email" class="form-control" [formControlName]="i" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Banner Source">
         </div>

@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
     let array:any=document.cookie.split(';');
     let storeData:any=JSON.parse(localStorage.getItem("user"));
     console.log(storeData);
-    if(storeData.jwtToken)
+    if(storeData&&storeData.jwtToken)
     {
       this.http.post("http://localhost:1234/verify/token",{data:"xyz"},{headers:{"Authorization": `Bearer ${storeData.jwtToken}`}})
       .subscribe(data=>{
@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
     }
     else
     {
-      ;
+      console.log("In the else code");
     }
     navigator.geolocation.getCurrentPosition(resp=>{
       console.log(resp);
